@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
+
 import 'package:responsive_desaign/constants.dart';
 
 import 'package:responsive_desaign/models/RecentFile.dart';
@@ -58,11 +58,11 @@ class DashboardScreen extends StatelessWidget {
                   Scaffold.of(context).openDrawer();
                 },
                   // onPressed: context.read<MenuController>().controlMenu,
-                   icon: Icon(Icons.menu)),
+                   icon:const Icon(Icons.menu)),
                    if(!Responsive.ismobile(context))
                 Text(
                   'Dashboard',
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                if(!Responsive.ismobile(context))
                 Spacer(flex:Responsive.isDesktop(context)? 2:1),
@@ -72,17 +72,17 @@ class DashboardScreen extends StatelessWidget {
                       hintText: 'Search',
                       fillColor: secondaryColor,
                       filled: true,
-                      border: OutlineInputBorder(
+                      border:const OutlineInputBorder(
                         borderSide: BorderSide.none,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       suffixIcon: InkWell(
                         onTap: () {},
                         child: Container(
-                          padding: EdgeInsets.all(defultPadding * 0.75),
-                          margin: EdgeInsets.symmetric(
+                          padding:const EdgeInsets.all(defultPadding * 0.75),
+                          margin:const EdgeInsets.symmetric(
                               horizontal: defultPadding / 2),
-                          decoration: BoxDecoration(
+                          decoration:const BoxDecoration(
                             color: primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
@@ -93,14 +93,14 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: defultPadding),
-                  padding: EdgeInsets.symmetric(
+                  margin:const EdgeInsets.only(left: defultPadding),
+                  padding:const EdgeInsets.symmetric(
                     horizontal: defultPadding,
                     vertical: defultPadding / 2,
                   ),
                   decoration: BoxDecoration(
                     color: secondaryColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius:const BorderRadius.all(Radius.circular(10)),
                     border: Border.all(color: Colors.white10),
                   ),
                   child: Row(
@@ -157,8 +157,8 @@ class DashboardScreen extends StatelessWidget {
 
   Container RecentFile(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(defultPadding),
-      decoration: BoxDecoration(
+      padding:const EdgeInsets.all(defultPadding),
+      decoration:const BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Column(
@@ -173,7 +173,7 @@ class DashboardScreen extends StatelessWidget {
             child: DataTable(
               horizontalMargin: 0,
               columnSpacing: defultPadding,
-              columns: [
+              columns: const[
                 DataColumn(
                   label: Text('File Name'),
                 ),

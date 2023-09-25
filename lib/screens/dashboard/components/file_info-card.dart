@@ -26,7 +26,7 @@ class FileInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
                Container(
-                padding: EdgeInsets.all(defultPadding * 0.75),
+                padding:const EdgeInsets.all(defultPadding * 0.75),
                  height: 40,
                  width: 40,
                  decoration: BoxDecoration(
@@ -37,7 +37,7 @@ class FileInfoCard extends StatelessWidget {
                     info.svgSrc,
                     ),
                ),
-               Icon(Icons.more_vert, color: Colors.white54,)
+              const Icon(Icons.more_vert, color: Colors.white54,)
              ],
            ),
            Text(

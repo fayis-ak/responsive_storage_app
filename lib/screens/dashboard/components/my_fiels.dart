@@ -55,7 +55,10 @@ class MyFiels extends StatelessWidget {
              desktop: FileInfoCardGridView(
               childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
               ),
-             tablet: FileInfoCardGridView(),
+             tablet: FileInfoCardGridView(
+              crossAxisCount: _size.width < 1024 ? 2:3 ,
+              childAspectRatio: 1.2,
+             ),
              ),   
     ],  
     );

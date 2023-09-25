@@ -110,12 +110,12 @@ class DashboardScreen extends StatelessWidget {
                         height: 38,
                       ),
                       if(!Responsive.ismobile(context))
-                      Padding(
+                     const Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: defultPadding / 2),
                         child: Text('Angelina Jolie'),
                       ),
-                      Icon(Icons.keyboard_arrow_down)
+                     const Icon(Icons.keyboard_arrow_down)
                     ],
                   ),
                 )
@@ -129,19 +129,19 @@ class DashboardScreen extends StatelessWidget {
                     flex: 5,
                     child: Column(
                       children: [
-                        MyFiels(),
-                        SizedBox(
+                       const MyFiels(),
+                       const SizedBox(
                           height: defultPadding,
                         ),
                         RecentFile(context),
                         if (Responsive.ismobile(context))
-                          SizedBox(height: defultPadding),
+                          const  SizedBox(height: defultPadding),
                         if (Responsive.ismobile(context))
                           StarageDetails(pieChartData: pieChartData),
                       ],
                     )),
                 if (!Responsive.ismobile(context))
-                  SizedBox(width: defultPadding),
+                 const SizedBox(width: defultPadding),
                 if (!Responsive.ismobile(context))
                   Expanded(
                     flex: 2,

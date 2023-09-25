@@ -46,49 +46,53 @@ class MainScreen extends StatelessWidget {
                           press: (){},
                           ),
                         DrawerListView(
-                          title: "Dashbord",
+                          title: "Transaction",
                           svgSrc: "assets/icons/menu_tran.svg",
                           press: (){},
                           ),
                          DrawerListView(
-                          title: "Dashbord",
+                          title: "Task",
                           svgSrc: "assets/icons/menu_task.svg",
                           press: (){},
                           ),
 
                            DrawerListView(
-                          title: "Dashbord",
+                          title: "Documents",
                           svgSrc: "assets/icons/menu_doc.svg",
                           press: (){},
                           ),
 
                            DrawerListView(
-                          title: "Dashbord",
+                          title: "Store",
                           svgSrc:"assets/icons/menu_store.svg",
                           press: (){},
                           ),
 
                            DrawerListView(
-                          title: "Dashbord",
+                          title: "Notification",
                           svgSrc: "assets/icons/menu_notification.svg",
                           press: (){},
                           ),
 
                            DrawerListView(
-                          title: "Dashbord",
+                          title: "Profile",
                           svgSrc: "assets/icons/menu_profile.svg",
                           press: (){},
                           ),
 
                            DrawerListView(
-                          title: "Dashbord",
+                          title: "Settings",
                           svgSrc: "assets/icons/menu_setting.svg",
                           press: (){},
                           ),
+                          
                         
                         ],
+                        
                   ),
+
                 ),
+                
               );
   }
 }

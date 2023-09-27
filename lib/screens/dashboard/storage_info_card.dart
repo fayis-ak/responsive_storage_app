@@ -17,8 +17,8 @@ class Strorageinfocard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: defultPadding),
-      padding: EdgeInsets.all(defultPadding),
+      margin:const EdgeInsets.only(top: defultPadding),
+      padding:const EdgeInsets.all(defultPadding),
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
@@ -35,7 +35,7 @@ class Strorageinfocard extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding:  EdgeInsets.symmetric(
+                padding:const  EdgeInsets.symmetric(
                   horizontal: defultPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

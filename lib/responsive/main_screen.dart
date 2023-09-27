@@ -1,5 +1,13 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:responsive_desaign/drawerPages.dart/dashboard.dart';
+import 'package:responsive_desaign/drawerPages.dart/profile.dart';
+import 'package:responsive_desaign/drawerPages.dart/settings.dart';
+import 'package:responsive_desaign/drawerPages.dart/store.dart';
+import 'package:responsive_desaign/drawerPages.dart/task.dart';
+import 'package:responsive_desaign/drawerPages.dart/transaction.dart';
 import 'package:responsive_desaign/responsive.dart';
 import 'package:responsive_desaign/screens/dashboard_screen.dart';
 
@@ -7,7 +15,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Sidemenu(context), // Pass the context here
+      drawer: Sidemenu(context), 
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,7 +23,7 @@ class MainScreen extends StatelessWidget {
             if (Responsive.isDesktop(context))
               Expanded(
                 child: Container(
-                  child: Sidemenu(context), // Pass the context here
+                  child: Sidemenu(context), 
                 ),
               ),
             Expanded(
@@ -30,9 +38,9 @@ class MainScreen extends StatelessWidget {
 }
 
 class Sidemenu extends StatelessWidget {
-  final BuildContext context; // Add context as a parameter
+  final BuildContext context; 
 
-  Sidemenu(this.context); // Constructor to receive the context
+  Sidemenu(this.context); 
 
   @override
   Widget build(BuildContext context) {
@@ -40,58 +48,115 @@ class Sidemenu extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            
+             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+               children: [
+                 if(!Responsive.isDesktop(context))
+                 IconButton(onPressed: (){
+                  Navigator.of(context).pop();
+                 },
+                 
+                  icon:const Icon(Icons.navigate_before,size: 50,)
+                  
+                  ),
+               ],
+             ),
+             
+
             DrawerHeader(
               child: Image.asset('assets/images/logo.png'),
+              
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Dashbord",
               svgSrc: "assets/icons/menu_dashbord.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Dashboard())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Transactions())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Task())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Documents",
               svgSrc: "assets/icons/menu_doc.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Task())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Store())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Task())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Profile())
+                   );
+              },
             ),
-            DrawerListView(
+            DrawerListTile( // Changed from DrawerListView
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context)=> Settings())
+                   );
+              },
             ),
-            if (!Responsive.isDesktop(context))
-              
-                 ListTile(
-                  trailing: CloseButton(color: Colors.red),
-                  
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+            
               
           ],
         ),
@@ -100,8 +165,8 @@ class Sidemenu extends StatelessWidget {
   }
 }
 
-class DrawerListView extends StatelessWidget {
-  const DrawerListView({
+class DrawerListTile extends StatelessWidget { // Changed class name
+  const DrawerListTile({
     Key? key,
     required this.title,
     required this.svgSrc,

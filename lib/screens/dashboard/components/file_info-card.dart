@@ -13,8 +13,8 @@ class FileInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-     padding: EdgeInsets.all(defultPadding),
-     decoration: BoxDecoration(
+     padding:const EdgeInsets.all(defultPadding),
+     decoration:const BoxDecoration(
        color: secondaryColor,
        borderRadius: BorderRadius.all(Radius.circular(10))
        ),
@@ -97,7 +97,7 @@ class ProgressLine extends StatelessWidget {
           height: 5,
           decoration: BoxDecoration(
             color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.all(Radius.circular(10))
+            borderRadius:const BorderRadius.all(Radius.circular(10))
           ),
           ),
           LayoutBuilder(builder: (context, constraints)=>Container(
@@ -105,7 +105,7 @@ class ProgressLine extends StatelessWidget {
           height: 5,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.all(Radius.circular(10))
+            borderRadius:const BorderRadius.all(Radius.circular(10))
           ),
           ),
           ),

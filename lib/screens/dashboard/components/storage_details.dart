@@ -14,16 +14,16 @@ class StarageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(defultPadding),
+      padding:const EdgeInsets.all(defultPadding),
       
-      decoration: BoxDecoration(
+      decoration:const BoxDecoration(
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Storage Details',
             style: TextStyle(
               fontSize: 18,

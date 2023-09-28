@@ -52,37 +52,37 @@ class DashboardScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-               if(!Responsive.isDesktop(context)) 
-               IconButton(
-                onPressed: (){
-                  Scaffold.of(context).openDrawer();
-                },
-                  // onPressed: context.read<MenuController>().controlMenu,
-                   icon:const Icon(Icons.menu)),
-                   if(!Responsive.ismobile(context))
-                Text(
-                  'Dashboard',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-               if(!Responsive.ismobile(context))
-                Spacer(flex:Responsive.isDesktop(context)? 2:1),
+                if (!Responsive.isDesktop(context))
+                  IconButton(
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      // onPressed: context.read<MenuController>().controlMenu,
+                      icon: const Icon(Icons.menu)),
+                if (!Responsive.ismobile(context))
+                  Text(
+                    'Dashboard',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                if (!Responsive.ismobile(context))
+                  Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search',
                       fillColor: secondaryColor,
                       filled: true,
-                      border:const OutlineInputBorder(
+                      border: const OutlineInputBorder(
                         borderSide: BorderSide.none,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       suffixIcon: InkWell(
                         onTap: () {},
                         child: Container(
-                          padding:const EdgeInsets.all(defultPadding * 0.75),
-                          margin:const EdgeInsets.symmetric(
+                          padding: const EdgeInsets.all(defultPadding * 0.75),
+                          margin: const EdgeInsets.symmetric(
                               horizontal: defultPadding / 2),
-                          decoration:const BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: primaryColor,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
@@ -93,14 +93,14 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin:const EdgeInsets.only(left: defultPadding),
-                  padding:const EdgeInsets.symmetric(
+                  margin: const EdgeInsets.only(left: defultPadding),
+                  padding: const EdgeInsets.symmetric(
                     horizontal: defultPadding,
                     vertical: defultPadding / 2,
                   ),
                   decoration: BoxDecoration(
                     color: secondaryColor,
-                    borderRadius:const BorderRadius.all(Radius.circular(10)),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                     border: Border.all(color: Colors.white10),
                   ),
                   child: Row(
@@ -109,13 +109,13 @@ class DashboardScreen extends StatelessWidget {
                         "assets/images/profile_pic.png",
                         height: 38,
                       ),
-                      if(!Responsive.ismobile(context))
-                     const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: defultPadding / 2),
-                        child: Text('Angelina Jolie'),
-                      ),
-                     const Icon(Icons.keyboard_arrow_down)
+                      if (!Responsive.ismobile(context))
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: defultPadding / 2),
+                          child: Text('Angelina Jolie'),
+                        ),
+                      const Icon(Icons.keyboard_arrow_down)
                     ],
                   ),
                 )
@@ -129,19 +129,19 @@ class DashboardScreen extends StatelessWidget {
                     flex: 5,
                     child: Column(
                       children: [
-                       const MyFiels(),
-                       const SizedBox(
+                        const MyFiels(),
+                        const SizedBox(
                           height: defultPadding,
                         ),
                         RecentFile(context),
                         if (Responsive.ismobile(context))
-                          const  SizedBox(height: defultPadding),
+                          const SizedBox(height: defultPadding),
                         if (Responsive.ismobile(context))
                           StarageDetails(pieChartData: pieChartData),
                       ],
                     )),
                 if (!Responsive.ismobile(context))
-                 const SizedBox(width: defultPadding),
+                  const SizedBox(width: defultPadding),
                 if (!Responsive.ismobile(context))
                   Expanded(
                     flex: 2,
@@ -157,8 +157,8 @@ class DashboardScreen extends StatelessWidget {
 
   Container RecentFile(BuildContext context) {
     return Container(
-      padding:const EdgeInsets.all(defultPadding),
-      decoration:const BoxDecoration(
+      padding: const EdgeInsets.all(defultPadding),
+      decoration: const BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Column(
@@ -173,7 +173,7 @@ class DashboardScreen extends StatelessWidget {
             child: DataTable(
               horizontalMargin: 0,
               columnSpacing: defultPadding,
-              columns: const[
+              columns: const [
                 DataColumn(
                   label: Text('File Name'),
                 ),

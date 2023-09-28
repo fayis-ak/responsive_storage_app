@@ -14,9 +14,8 @@ class StarageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:const EdgeInsets.all(defultPadding),
-      
-      decoration:const BoxDecoration(
+      padding: const EdgeInsets.all(defultPadding),
+      decoration: const BoxDecoration(
         color: secondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
@@ -45,49 +44,50 @@ class StarageDetails extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: defultPadding,),
+                      const SizedBox(
+                        height: defultPadding,
+                      ),
                       Text(
                         '29.1',
-                      style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium!
-                      .copyWith(color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      height: 0.5
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                height: 0.5),
                       ),
-                      ),
-                     const Text("of 128GB")
-
+                      const Text("of 128GB")
                     ],
-                  ),),
+                  ),
+                ),
               ],
             ),
           ),
-         const Strorageinfocard(
+          const Strorageinfocard(
             svgSrc: "assets/icons/Documents.svg",
             title: "Document Files",
             amountofFiles: "1.3GB",
             numofFiles: 1328,
-            ),
+          ),
           const Strorageinfocard(
             svgSrc: "assets/icons/media.svg",
             title: "Media Files",
             amountofFiles: "15.3GB",
             numofFiles: 1328,
-            ),
-         const Strorageinfocard(
+          ),
+          const Strorageinfocard(
             svgSrc: "assets/icons/folder.svg",
             title: "other Files",
             amountofFiles: "1.3GB",
             numofFiles: 1328,
-            ),
-         const Strorageinfocard(
+          ),
+          const Strorageinfocard(
             svgSrc: "assets/icons/unknown.svg",
             title: "unknown",
             amountofFiles: "1.3GB",
             numofFiles: 140,
-            ),   
-          
+          ),
         ],
       ),
     );

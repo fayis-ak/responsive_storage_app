@@ -5,26 +5,25 @@ import 'package:responsive_desaign/constants.dart';
 class Strorageinfocard extends StatelessWidget {
   const Strorageinfocard({
     super.key,
-     required this.title,
-      required this.svgSrc,
-       required this.amountofFiles,
-        required this.numofFiles,
+    required this.title,
+    required this.svgSrc,
+    required this.amountofFiles,
+    required this.numofFiles,
   });
 
-  final String title,svgSrc, amountofFiles;
+  final String title, svgSrc, amountofFiles;
   final int numofFiles;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:const EdgeInsets.only(top: defultPadding),
-      padding:const EdgeInsets.all(defultPadding),
+      margin: const EdgeInsets.only(top: defultPadding),
+      padding: const EdgeInsets.all(defultPadding),
       decoration: BoxDecoration(
-        border: Border.all(
-          width: 2,
-          color: primaryColor.withOpacity(0.15)),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(defultPadding),),
+        border: Border.all(width: 2, color: primaryColor.withOpacity(0.15)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(defultPadding),
+        ),
       ),
       child: Row(
         children: [
@@ -32,33 +31,30 @@ class Strorageinfocard extends StatelessWidget {
             height: 20,
             width: 20,
             child: SvgPicture.asset(svgSrc),
-            ),
-            Expanded(
-              child: Padding(
-                padding:const  EdgeInsets.symmetric(
-                  horizontal: defultPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: defultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                   title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     '$numofFiles Files',
                     style: Theme.of(context)
-                    .textTheme
-                    .bodySmall!
-                    .copyWith(color: Colors.white70),
-                    ),
-
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: Colors.white70),
+                  ),
                 ],
-                ),
               ),
-              ),
-              Text(amountofFiles)
-
+            ),
+          ),
+          Text(amountofFiles)
         ],
       ),
     );

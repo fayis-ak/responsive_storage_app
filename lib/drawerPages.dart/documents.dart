@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
 
-class Documents extends StatelessWidget {
-  const Documents({super.key});
+import 'package:responsive_desaign/responsive.dart';
+import 'package:responsive_desaign/responsive/main_screen.dart';
+
+class Documentsscreen extends StatelessWidget {
+  const Documentsscreen ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Documents'),
-      ),
+       drawer: Sidemenu(context),
+       body: SafeArea(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if(Responsive.isDesktop(context))
+            Expanded(
+              child:Container(
+                child: Sidemenu(context)
+                ), 
+            ),
+            Expanded(
+              flex: 5,
+              child: Center(child: Text('Documents')),
+            )
+          ],
+        )
+        ),
     );
+ 
   }
 }

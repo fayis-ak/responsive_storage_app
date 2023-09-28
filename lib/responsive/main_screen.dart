@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:responsive_desaign/drawerPages.dart/dashboard.dart';
+import 'package:responsive_desaign/drawerPages.dart/documents.dart';
+import 'package:responsive_desaign/drawerPages.dart/notification.dart';
 import 'package:responsive_desaign/drawerPages.dart/profile.dart';
 import 'package:responsive_desaign/drawerPages.dart/settings.dart';
 import 'package:responsive_desaign/drawerPages.dart/store.dart';
@@ -15,7 +14,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Sidemenu(context), 
+      drawer: Sidemenu(context),
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +22,7 @@ class MainScreen extends StatelessWidget {
             if (Responsive.isDesktop(context))
               Expanded(
                 child: Container(
-                  child: Sidemenu(context), 
+                  child: Sidemenu(context),
                 ),
               ),
             Expanded(
@@ -38,9 +37,9 @@ class MainScreen extends StatelessWidget {
 }
 
 class Sidemenu extends StatelessWidget {
-  final BuildContext context; 
+  final BuildContext context;
 
-  Sidemenu(this.context); 
+  Sidemenu(this.context);
 
   @override
   Widget build(BuildContext context) {
@@ -48,116 +47,98 @@ class Sidemenu extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.end,
-               children: [
-                 if(!Responsive.isDesktop(context))
-                 IconButton(onPressed: (){
-                  Navigator.of(context).pop();
-                 },
-                 
-                  icon:const Icon(Icons.navigate_before,size: 50,)
-                  
-                  ),
-               ],
-             ),
-             
-
+              children: [
+                if (!Responsive.isDesktop(context))
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(
+                        Icons.navigate_before,
+                        size: 50,
+                      )),
+              ],
+            ),
             DrawerHeader(
               child: Image.asset('assets/images/logo.png'),
-              
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Dashbord",
               svgSrc: "assets/icons/menu_dashbord.svg",
               press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context)=> Dashboard())
+                    builder: (context)=> MainScreen())
                    );
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Transactions())
-                   );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Transactions()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
               press: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Task())
-                   );
+                    context, MaterialPageRoute(builder: (context) => Task()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Documents",
               svgSrc: "assets/icons/menu_doc.svg",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Task())
-                   );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Documentsscreen()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
               press: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Store())
-                   );
+                    context, MaterialPageRoute(builder: (context) => Store()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Task())
-                   );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Notificationscreen()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Profile())
-                   );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
               },
             ),
-            DrawerListTile( // Changed from DrawerListView
+            DrawerListTile(
+              // Changed from DrawerListView
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> Settings())
-                   );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Settings()));
               },
             ),
-            
-              
           ],
         ),
       ),
@@ -165,7 +146,8 @@ class Sidemenu extends StatelessWidget {
   }
 }
 
-class DrawerListTile extends StatelessWidget { // Changed class name
+class DrawerListTile extends StatelessWidget {
+  // Changed class name
   const DrawerListTile({
     Key? key,
     required this.title,

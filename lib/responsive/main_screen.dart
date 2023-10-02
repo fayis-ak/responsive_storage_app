@@ -7,14 +7,30 @@ import 'package:responsive_desaign/drawerPages.dart/settings.dart';
 import 'package:responsive_desaign/drawerPages.dart/store.dart';
 import 'package:responsive_desaign/drawerPages.dart/task.dart';
 import 'package:responsive_desaign/drawerPages.dart/transaction.dart';
+
 import 'package:responsive_desaign/responsive.dart';
 import 'package:responsive_desaign/screens/dashboard_screen.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  late String selectedDrawerItem = "Dashboard";
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  String selectedDrawerItem = "Dashboard";
+
+  void setSelected(String itemname) {
+    setState(() {
+      selectedDrawerItem = itemname;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Sidemenu(context),
+      drawer: Sidemenu(context, selectedDrawerItem, setSelected),
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,12 +38,14 @@ class MainScreen extends StatelessWidget {
             if (Responsive.isDesktop(context))
               Expanded(
                 child: Container(
-                  child: Sidemenu(context),
+                  child: Sidemenu(context, selectedDrawerItem, setSelected),
                 ),
               ),
             Expanded(
               flex: 5,
-              child: DashboardScreen(),
+              child: DashboardScreen(
+                selectedDrawerItem: selectedDrawerItem,
+              ),
             ),
           ],
         ),
@@ -38,8 +56,10 @@ class MainScreen extends StatelessWidget {
 
 class Sidemenu extends StatelessWidget {
   final BuildContext context;
+  final String selectedDrawerItem;
+  final Function(String) onItemSelected;
 
-  Sidemenu(this.context);
+  Sidemenu(this.context, this.selectedDrawerItem, this.onItemSelected);
 
   @override
   Widget build(BuildContext context) {
@@ -65,24 +85,49 @@ class Sidemenu extends StatelessWidget {
               child: Image.asset('assets/images/logo.png'),
             ),
             DrawerListTile(
-              // Changed from DrawerListView
-              title: "Dashbord",
+              title: "Dashboard",
               svgSrc: "assets/icons/menu_dashbord.svg",
+              isSelected: selectedDrawerItem == "Dashboard",
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=> MainScreen())
-                   );
+                onItemSelected("Dashboard");
+                setSelected("Dashboard");
+              },
+              onSelected: (title) {
+                setSelected(title);
               },
             ),
             DrawerListTile(
               // Changed from DrawerListView
               title: "Transaction",
               svgSrc: "assets/icons/menu_tran.svg",
+              isSelected: selectedDrawerItem == "Transaction",
+
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Transactions()));
+                onItemSelected("Transaction");
+                setSelected("Transaction");
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        TransactionContent(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
+              },
+
+              onSelected: (title) {
+                setSelected(title);
               },
             ),
             DrawerListTile(
@@ -90,8 +135,31 @@ class Sidemenu extends StatelessWidget {
               title: "Task",
               svgSrc: "assets/icons/menu_task.svg",
               press: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Task()));
+                onItemSelected("Task");
+                setSelected("Task");
+                  Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Task(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
+              },
+              isSelected: selectedDrawerItem == "Task",
+              onSelected: (title) {
+                setSelected(title);
               },
             ),
             DrawerListTile(
@@ -99,8 +167,30 @@ class Sidemenu extends StatelessWidget {
               title: "Documents",
               svgSrc: "assets/icons/menu_doc.svg",
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Documentsscreen()));
+                onItemSelected("Documents");
+              },
+              isSelected: selectedDrawerItem == "Documents",
+              onSelected: (title) {
+                setSelected(title);
+               Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Documentsscreen(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
               },
             ),
             DrawerListTile(
@@ -108,8 +198,31 @@ class Sidemenu extends StatelessWidget {
               title: "Store",
               svgSrc: "assets/icons/menu_store.svg",
               press: () {
+                onItemSelected("Store");
+                setSelected("Store");
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Store()));
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Storescrren(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
+              },
+              isSelected: selectedDrawerItem == "Store",
+              onSelected: (title) {
+                setSelected(title);
               },
             ),
             DrawerListTile(
@@ -117,8 +230,31 @@ class Sidemenu extends StatelessWidget {
               title: "Notification",
               svgSrc: "assets/icons/menu_notification.svg",
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Notificationscreen()));
+                onItemSelected("Notification");
+                setSelected("Notification");
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Notificationscreen(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
+              },
+              isSelected: selectedDrawerItem == "Notification",
+              onSelected: (title) {
+                setSelected(title);
               },
             ),
             DrawerListTile(
@@ -126,8 +262,31 @@ class Sidemenu extends StatelessWidget {
               title: "Profile",
               svgSrc: "assets/icons/menu_profile.svg",
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                onItemSelected("Profile");
+                setSelected("Profile");
+              },
+              isSelected: selectedDrawerItem == "Profile",
+              onSelected: (title) {
+                setSelected(title);
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Profile(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
               },
             ),
             DrawerListTile(
@@ -135,8 +294,31 @@ class Sidemenu extends StatelessWidget {
               title: "Settings",
               svgSrc: "assets/icons/menu_setting.svg",
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Settings()));
+                onItemSelected("Settings");
+                setSelected("Settings");
+              },
+              isSelected: selectedDrawerItem == "Settings",
+              onSelected: (title) {
+                setSelected(title);
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        Settingsscreen(),
+                    transitionsBuilder:
+                        (context, animation1, animation2, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: Offset(0, 0), // Starting position (off-screen to the right)
+                          end: Offset
+                              .zero, // Ending position (center of the screen)
+                        ).animate(animation1),
+                        child: child,
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 500),
+                  ),
+                );
               },
             ),
           ],
@@ -144,6 +326,8 @@ class Sidemenu extends StatelessWidget {
       ),
     );
   }
+
+  void setSelected(String s) {}
 }
 
 class DrawerListTile extends StatelessWidget {
@@ -153,24 +337,33 @@ class DrawerListTile extends StatelessWidget {
     required this.title,
     required this.svgSrc,
     required this.press,
+    required this.isSelected,
+    required this.onSelected,
   }) : super(key: key);
 
   final String title, svgSrc;
   final VoidCallback press;
+  final bool isSelected;
+  final Function(String) onSelected;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: press,
+      onTap: () {
+        press();
+        onSelected(title);
+      },
       horizontalTitleGap: 0.0,
       leading: SvgPicture.asset(
         svgSrc,
-        color: Colors.white54,
+        color: isSelected ? Colors.blue : Colors.white54,
         height: 16,
       ),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.white54),
+        style: TextStyle(
+          color: isSelected ? Colors.blue : Colors.white54,
+        ),
       ),
     );
   }

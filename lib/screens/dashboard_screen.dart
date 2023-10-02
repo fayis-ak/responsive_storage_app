@@ -10,6 +10,15 @@ import 'package:responsive_desaign/screens/dashboard/components/my_fiels.dart';
 import 'package:responsive_desaign/screens/dashboard/components/storage_details.dart';
 
 class DashboardScreen extends StatelessWidget {
+
+
+late String selectedDrawerItem;
+
+  DashboardScreen({required this.selectedDrawerItem});
+
+
+
+
   @override
   Widget build(BuildContext context) {
     List<PieChartSectionData> pieChartData = [
